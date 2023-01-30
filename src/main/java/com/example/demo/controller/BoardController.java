@@ -34,7 +34,7 @@ import com.example.demo.service.BoardService;
 import com.example.demo.service.JSONUtil;
 
 @Controller
-@RequestMapping("/bbs/board")
+@RequestMapping("/goodM/board")
 public class BoardController {
 
 	@Autowired private BoardService boardService;
@@ -115,7 +115,7 @@ public class BoardController {
 		Reply reply = new Reply(content, isMine, sessionUid, bid);
 		boardService.insertReply(reply);
 		boardService.increaseReplyCount(bid);
-		return "redirect:/bbs/board/detail?bid=" + bid + "&uid=" + uid + "&option=DNI";	// Do Not Increase
+		return "redirect:/goodM/board/detail?bid=" + bid + "&uid=" + uid + "&option=DNI";	// Do Not Increase
 	}
 	
 	@GetMapping("/write")
@@ -145,7 +145,7 @@ public class BoardController {
 		String files = json.stringify(list);
 		Board board = new Board(uid, title, content, files); 
 		boardService.insertBoard(board);
-		return "redirect:/bbs/board/list?p=1&f=&q=";
+		return "redirect:/goodM/board/list?p=1&f=&q=";
 	}
 	
 	@GetMapping("/update")
@@ -210,7 +210,7 @@ public class BoardController {
 		Board board = new Board(bid, title, content, files);
 		boardService.updateBoard(board);
 		
-		return "redirect:/bbs/board/detail?bid=" + bid + "&uid=" + uid + "&option=DNI";
+		return "redirect:/goodM/board/detail?bid=" + bid + "&uid=" + uid + "&option=DNI";
 	}
 	
 	@GetMapping("/delete")
@@ -226,7 +226,7 @@ public class BoardController {
 		boardService.deleteBoard(bid);
 		
 		HttpSession session = req.getSession();
-		return "redirect:/bbs/board/list?p=" + session.getAttribute("currentBoardPage") + "&f=&q=";
+		return "redirect:/goodM/board/list?p=" + session.getAttribute("currentBoardPage") + "&f=&q=";
 	}
 	
 	/* 아래의 코드는 과거 데이터와의 호환성 때문에 남겨둠 */

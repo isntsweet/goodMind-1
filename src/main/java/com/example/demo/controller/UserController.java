@@ -18,7 +18,7 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
 @Controller
-@RequestMapping("/bbs/user")
+@RequestMapping("/goodM/user")
 public class UserController {
 
 	@Autowired
@@ -38,15 +38,15 @@ public class UserController {
 		switch(result) {
 		case UserService.CORRECT_LOGIN:
 			model.addAttribute("msg", session.getAttribute("uname") + "님 환영합니다.");
-			model.addAttribute("url", "/bbs/board/list?p=1&f=&q=");
+			model.addAttribute("url", "/goodM/board/list?p=1&f=&q=");
 			break;
 		case UserService.WRONG_PASSWORD:
 			model.addAttribute("msg", "잘못된 패스워드 입니다. 다시 입력하세요.");
-			model.addAttribute("url", "/bbs/user/login"); 
+			model.addAttribute("url", "/goodM/user/login"); 
 			break;
 		case UserService.UID_NOT_EXIST:
 			model.addAttribute("msg", "회원 가입 페이지로 이동합니다.");
-			model.addAttribute("url", "/bbs/user/register");
+			model.addAttribute("url", "/goodM/user/register");
 		}
 		return "user/alertMsg";
 	}
@@ -55,7 +55,7 @@ public class UserController {
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "redirect:/bbs/user/login";
+		return "redirect:/goodM/user/login";
 	}
 	
 	@GetMapping("/register")
@@ -74,16 +74,16 @@ public class UserController {
 		User user = userService.getUser(uid);
 		if (user != null) {
 			model.addAttribute("msg", "중복 아이디입니다.");
-			model.addAttribute("url", "/bbs/user/register");
+			model.addAttribute("url", "/goodM/user/register");
 			return "user/alertMsg";
 		}
 		if (pwd.equals(pwd2)) {
 			user = new User(uid, pwd, uname, email);
 			userService.registerUser(user);
-			return "redirect:/bbs/user/login";
+			return "redirect:/goodM/user/login";
 		} else {
 			model.addAttribute("msg", "패스워드 입력이 잘못되었습니다.");
-			model.addAttribute("url", "/bbs/user/register");
+			model.addAttribute("url", "/goodM/user/register");
 			return "user/alertMsg";
 		}
 	}
@@ -126,15 +126,15 @@ public class UserController {
 			user = new User(uid, uname, email);
 			userService.updateUser(user, "");
 			session.setAttribute("uname", uname);
-			return "redirect:/bbs/user/list/" + session.getAttribute("currentUserPage");			
+			return "redirect:/goodM/user/list/" + session.getAttribute("currentUserPage");			
 		} else if (pwd.equals(pwd2)) {			// 패스워드가 올바른 경우
 			user = new User(uid, uname, email);
 			userService.updateUser(user, pwd);
 			session.setAttribute("uname", uname);
-			return "redirect:/bbs/user/list/" + session.getAttribute("currentUserPage");
+			return "redirect:/goodM/user/list/" + session.getAttribute("currentUserPage");
 		} else {								// 패스워드를 잘못 입력한 경우
 			model.addAttribute("msg", "패스워드 입력이 잘못되었습니다.");
-			model.addAttribute("url", "/bbs/user/update/" + uid);
+			model.addAttribute("url", "/goodM/user/update/" + uid);
 			return "user/alertMsg";
 		}
 	}
@@ -149,7 +149,7 @@ public class UserController {
 	public String deleteConfirm(@PathVariable String uid, HttpServletRequest req) {
 		userService.deleteUser(uid);
 		HttpSession session = req.getSession();
-		return "redirect:/bbs/user/list/" + session.getAttribute("currentUserPage");
+		return "redirect:/goodM/user/list/" + session.getAttribute("currentUserPage");
 	}
 	
 }
