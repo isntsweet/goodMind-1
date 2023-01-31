@@ -37,8 +37,8 @@ public class UserController {
 		int result = userService.login(uid, pwd, session);
 		switch(result) {
 		case UserService.CORRECT_LOGIN:
-			model.addAttribute("msg", session.getAttribute("uname") + "님 환영합니다.");
-			model.addAttribute("url", "/goodM/board/list?p=1&f=&q=");
+			model.addAttribute("msg", session.getAttribute("uname") + "님 환영합니다.");			
+			model.addAttribute("url", "/goodM/user/home");
 			break;
 		case UserService.WRONG_PASSWORD:
 			model.addAttribute("msg", "잘못된 패스워드 입니다. 다시 입력하세요.");
@@ -56,6 +56,11 @@ public class UserController {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		return "redirect:/goodM/user/login";
+	}
+	
+	@GetMapping("/home")
+	public String main() {
+		return "user/home";
 	}
 	
 	@GetMapping("/register")
@@ -88,6 +93,7 @@ public class UserController {
 		}
 	}
 	
+	//유저의 경우 유저 목록이 아닌 본인정보 페이지로 특정되야하는 부분 있음
 	@GetMapping("/list/{page}")
 	public String list(@PathVariable int page, HttpServletRequest req, Model model) {
 		List<User> list = userService.getUserList(page);
@@ -139,6 +145,7 @@ public class UserController {
 		}
 	}
 	
+	//관리자에게 계정 삭제 요청으로 할지? 본인 삭제로 할지 체크 필요!
 	@GetMapping("/delete/{uid}")
 	public String delete(@PathVariable String uid, Model model) {
 		model.addAttribute("uid", uid);

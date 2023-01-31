@@ -4,7 +4,7 @@
 				<div class="d-flex flex-row">
 					<div>
 		                <img id="profileImg" class="rounded-circle" width="100%"
-		                	 src="/bbs/file/download?file=${empty sessionProfile ? 'avatar_man.png' : sessionProfile}">
+		                	 src="/goodM/file/download?file=${empty sessionProfile ? 'avatar_man.png' : sessionProfile}">
 	                </div>
 	                <div class="align-self-end me-4">
 	                	<a href="#" id="profileBtn" >
@@ -20,7 +20,7 @@
                 </div>
                 
                 <span class="mt-3" id="stateMsg">
-                	${empty sessionStateMsg ? '피할 수 없으면 즐겨라!!!' : sessionStateMsg}
+                	${empty sessionStateMsg ? '상태메세지를 입력해주세요.' : sessionStateMsg}
                 </span>
                	<a href="#" id="stateMsgBtn"><span class="badge bg-secondary">수정</span></a>
                 <div id="stateMsgInput" class="mt-2 d-none">

@@ -30,7 +30,7 @@
     				processData: false,
     				contentType: false,
     				success: function(result) {
-    					const src = '/bbs/file/download?file=' + result;
+    					const src = '/goodM/file/download?file=' + result;
     					$('#profileImg').attr({src});	// attr({src: src})
     				}
    				});

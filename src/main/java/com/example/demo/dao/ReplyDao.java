@@ -11,15 +11,15 @@ import com.example.demo.entity.Reply;
 @Mapper
 public interface ReplyDao {
 
-	@Select("SELECT r.rid, r.content, r.regDate, r.isMine, r.uid, r.bid, u.uname "
+	@Select("SELECT r.rid, r.content, r.regDate, r.isMine, r.uid, r.genBid, u.uname "
 			+ "	FROM reply AS r"
 			+ "	JOIN users AS u"
 			+ "	ON r.uid=u.uid"
-			+ "	WHERE bid=#{bid}")
-	public List<Reply> getReplyList(int bid);
+			+ "	WHERE genBid=#{genBid}")
+	public List<Reply> getReplyList(int genBid);
 	
 	@Insert("INSERT INTO reply"
-			+ " VALUES (default, #{content}, default, #{isMine}, #{uid}, #{bid})")
+			+ " VALUES (default, #{content}, default, #{isMine}, #{uid}, #{genBid})")
 	public void insertReply(Reply reply);
 	
 }

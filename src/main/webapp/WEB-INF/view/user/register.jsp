@@ -12,7 +12,8 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-            <img src="/bbs/img/ckworld-logo.png" alt="Logo" style="height:60px;" class="rounded-3 mx-2">
+        <!-- 로고 지정 필요 -->
+            <img src="/goodM/img/logo.png" alt="Logo" style="height:60px;" class="rounded-3 mx-2">
             <div class="p-2 bg-dark justify-content-center rounded">
                 <img src="https://picsum.photos/1500/200" width="100%">
             </div>
@@ -25,7 +26,7 @@
             <div class="col-4">
             	<h3><strong>회원 가입</strong></h3>
             	<hr>
-	            <form action="/bbs/user/register" method="post">
+	            <form action="/goodM/user/register" method="post">
 	                <table class="table table-borderless">
 	                    <tr>
 	                        <td><label for="uid">사용자 ID</label></td>

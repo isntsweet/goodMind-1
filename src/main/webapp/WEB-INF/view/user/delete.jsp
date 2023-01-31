@@ -28,8 +28,9 @@
 			                    <strong class="card-title">삭제하시겠습니까?</strong>
 			                    <p class="card-text text-center">
 			                        <br>
-			                        <button class="btn btn-primary" onclick="location.href='/bbs/user/deleteConfirm/${uid}'">삭제</button>
-			                        <button class="btn btn-secondary" onclick="location.href='/bbs/user/list/${currentUserPage}'">취소</button>
+			                        <!-- 유저 탈퇴 방식 결정에 따라 주소 변경 필요 -->
+			                        <button class="btn btn-primary" onclick="location.href='/goodM/user/deleteConfirm/${uid}'">삭제</button>
+			                        <button class="btn btn-secondary" onclick="location.href='/goodM/user/list/${currentUserPage}'">취소</button>
 			                    </p>
 			                </div>
 			            </div>			            
