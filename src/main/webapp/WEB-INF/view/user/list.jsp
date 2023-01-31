@@ -23,6 +23,7 @@
             	<h3><strong>사용자 목록</strong></h3>
             	<hr>
                 <div class="row">
+                <!-- 유저 페이지 형식 결정에따라 list 수정 필요 -->
 		            <table class="table table-condensed table-hover" style="margin-bottom: 80px;">
 		                <tr class="table-secondary d-flex">
 		                    <th class="col-1">번호</th>
@@ -43,7 +44,7 @@
 	                        <td class="col-1">
 	                        <%-- 본인만이 수정 권한이 있음 --%>
 				            <c:if test="${uid eq user.uid}">
-				            	<a href="/bbs/user/update/${user.uid}"><i class="fas fa-user-edit"></i></a>
+				            	<a href="/goodM/user/update/${user.uid}"><i class="fas fa-user-edit"></i></a>
 				            </c:if>
 				            <c:if test="${uid ne user.uid}">
 				            	<a href="#" class="disabled-link"><i class="fas fa-user-edit"></i></a>
@@ -51,7 +52,7 @@
 				            
 				            <%-- 관리자(admin) 만이 삭제 권한이 있음 --%>
 				            <c:if test="${uid eq 'admin'}">
-	                            <a href="/bbs/user/delete/${user.uid}"><i class="fas fa-user-minus"></i></a>
+	                            <a href="/goodM/user/delete/${user.uid}"><i class="fas fa-user-minus"></i></a>
 				            </c:if>
 				            <c:if test="${uid ne 'admin'}">
 				            	<a href="#" class="disabled-link"><i class="fas fa-user-minus"></i></a>
@@ -64,7 +65,7 @@
 	                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
 	                <c:forEach var="page" items="${pageList}" varStatus="loop">    
 	                    <li class="page-item ${(currentUserPage eq page) ? 'active' : ''}">
-	                    	<a class="page-link" href="/bbs/user/list/${page}">${page}</a>
+	                    	<a class="page-link" href="/goodM/user/list/${page}">${page}</a>
 	                    </li>
 	                </c:forEach>   
 	                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>

@@ -2,7 +2,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
-DROP TABLE IF EXISTS diary;
+DROP TABLE IF EXISTS diary_board;
 DROP TABLE IF EXISTS like_list;
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS general_board;
@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS users;
 
 /* Create Tables */
 
-CREATE TABLE diary
+CREATE TABLE diary_board
 (
 	did int NOT NULL AUTO_INCREMENT,
 	uid varchar(20) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE diary
 
 CREATE TABLE general_board
 (
-	genbid int NOT NULL AUTO_INCREMENT,
+	genBid int NOT NULL AUTO_INCREMENT,
 	uid varchar(20) NOT NULL,
 	title varchar(128) NOT NULL,
 	content varchar(128),
@@ -40,13 +40,13 @@ CREATE TABLE general_board
 	replyCount int DEFAULT 0 NOT NULL,
 	isDeleted int DEFAULT 0 NOT NULL,
 	files varchar(100),
-	PRIMARY KEY (genbid)
+	PRIMARY KEY (genBid)
 );
 
 
 CREATE TABLE info_board
 (
-	infobid int NOT NULL AUTO_INCREMENT,
+	infoBid int NOT NULL AUTO_INCREMENT,
 	uid varchar(20) NOT NULL,
 	title varchar(128) NOT NULL,
 	content varchar(128),
@@ -54,7 +54,7 @@ CREATE TABLE info_board
 	viewCount int DEFAULT 0 NOT NULL,
 	isDeleted int DEFAULT 0 NOT NULL,
 	files varchar(100),
-	PRIMARY KEY (infobid)
+	PRIMARY KEY (infoBid)
 );
 
 
@@ -62,8 +62,8 @@ CREATE TABLE like_list
 (
 	likeCount int DEFAULT 0 NOT NULL,
 	uid varchar(20) NOT NULL,
-	genbid int NOT NULL,
-	infobid int NOT NULL,
+	genBid int NOT NULL,
+	infoBid int NOT NULL,
 	PRIMARY KEY (likeCount)
 );
 
@@ -86,7 +86,7 @@ CREATE TABLE reply
 	regDate datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	isMine int NOT NULL,
 	uid varchar(20) NOT NULL,
-	genbid int NOT NULL,
+	genBid int NOT NULL,
 	PRIMARY KEY (rid)
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE users
 	pwd char(60) NOT NULL,
 	uname varchar(20) NOT NULL,
 	email varchar(32),
-	regDate datetime DEFAULT (CURRENT_DATE),
+	regDate date DEFAULT (CURRENT_DATE),
 	isDeleted int DEFAULT 0 NOT NULL,
 	PRIMARY KEY (uid)
 );
@@ -114,30 +114,30 @@ CREATE TABLE users
 /* Create Foreign Keys */
 
 ALTER TABLE like_list
-	ADD FOREIGN KEY (genbid)
-	REFERENCES general_board (genbid)
+	ADD FOREIGN KEY (genBid)
+	REFERENCES general_board (genBid)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE reply
-	ADD FOREIGN KEY (genbid)
-	REFERENCES general_board (genbid)
+	ADD FOREIGN KEY (genBid)
+	REFERENCES general_board (genBid)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE like_list
-	ADD FOREIGN KEY (infobid)
-	REFERENCES info_board (infobid)
+	ADD FOREIGN KEY (infoBid)
+	REFERENCES info_board (infoBid)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
 
 
-ALTER TABLE diary
+ALTER TABLE diary_board
 	ADD FOREIGN KEY (uid)
 	REFERENCES users (uid)
 	ON UPDATE RESTRICT

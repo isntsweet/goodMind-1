@@ -19,6 +19,6 @@
             alertify.message('OK');
             location.href = url;
         });
-    </script>
+    </script> 
 </body>
 </html>
