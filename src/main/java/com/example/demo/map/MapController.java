@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.CsvUtil;
+import com.example.demo.service.MapUtil;
 
 @Controller
 @RequestMapping("/map")
@@ -150,9 +151,9 @@ public class MapController {
 		List<List<String>> dataList = new ArrayList<>();
 		for (String place: hotPlaces) {
 			List<String> row = new ArrayList<>();
-			String roadAddr = mu.getRoadAddr(place, roadAddrKey);
+			String roadAddr = mu.getRoadAddr(place);
 			output += roadAddr + "<br>";
-			List<String> geocode = mu.getGeocode(roadAddr, accessId, secretKey);
+			List<String> geocode = mu.getGeocode(roadAddr);
 			row.add(place);
 			row.add(roadAddr);
 			row.add(geocode.get(0));		// Longitude(경도)
