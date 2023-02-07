@@ -10,7 +10,11 @@ public interface UserService {
 	public static final int CORRECT_LOGIN = 0;
 	public static final int WRONG_PASSWORD = 1;
 	public static final int UID_NOT_EXIST = 2;
-
+	
+	// 유저 페이지
+	List<User> getUserInfo();
+	
+	//유저 리스트
 	List<User> getUserList(int page);
 
 	User getUser(String uid);

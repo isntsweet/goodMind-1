@@ -20,6 +20,10 @@ public interface UserDao {
 			+ "	LIMIT 10 OFFSET #{offset}")
 	public List<User> getUserList(int offset);
 	
+	// 유저 페이지
+	@Select("SELECT * FROM users ORDER BY regDate, uid")
+	public List<User> getUserInfo();
+	
 	@Insert("INSERT INTO users VALUES (#{uid}, #{pwd}, #{uname}, #{email}, DEFAULT, DEFAULT)")
 	public void insertUser(User user);
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-    <title>게시판 샘플 프로젝트</title>
+    <title>기분어때? 심리건강 서비스</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
