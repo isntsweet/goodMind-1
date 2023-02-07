@@ -93,6 +93,13 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/myPage")
+	public String myPage(HttpServletRequest req, Model model) {
+		List<User> userPage = userService.getUserInfo();		
+		model.addAttribute("userPage", userPage);
+		return "user/myPage";
+	}
+
 	//유저의 경우 유저 목록이 아닌 본인정보 페이지로 특정되야하는 부분 있음
 	@GetMapping("/list/{page}")
 	public String list(@PathVariable int page, HttpServletRequest req, Model model) {

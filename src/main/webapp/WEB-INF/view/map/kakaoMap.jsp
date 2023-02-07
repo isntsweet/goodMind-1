@@ -2,14 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="utf-8">
-    <title>여러개 마커 표시하기</title>
+    <title>Map - 도움찾기</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-</head>
-<body>
 
+	<%@ include file="../common/heading.jsp" %>
+    <style>
+        th, td { text-align: center; }
+    </style>
+</head>
+<body style="margin-top: 80px;">
+ <%@ include file="../common/top.jsp" %>
+ <h3><strong>주변 병원/기관 찾기</strong></h3>
 <div id="map" style="width:35%;height:500px;margin:40px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9829722c486e4c2d4f6d8477a49a1129&libraries=services,clusterer,drawing"></script>
@@ -106,5 +112,6 @@ function displayMarker(locPosition, message) {
 
 
 </script>
+<%@ include file="../common/bottom.jsp" %>
 </body>
 </html>
