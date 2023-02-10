@@ -16,8 +16,15 @@ public interface DiaryBoardDao {
 	 @Select("SELECT d.did, d.uid, d.title, d.content, d.modTime, "
 	 		+ "d.files, u.uname from diaryboard AS d " 
 	 		+ "JOIN users AS u ON d.uid=u.uid "
-	 		+ "WHERE d.isDeleted=0 ORDER BY d.did DESC")
-	 List<DiaryBoard> getDiaryBoardList();
+	 		+ "WHERE d.isDeleted=0 and ${field} like #{query} " // d.did -> did로 수정 + and이하 추가 2/10
+	 		+ "ORDER BY did DESC limit 10 offset #{offset}") // limit 이하부터 추가 2/10
+	 public List<DiaryBoard> getDiaryBoardList(int offset, String field, String query);
+	 
+	 @Select("SELECT COUNT(did) FROM diaryBoard AS d"
+				+ "	JOIN users AS u"
+				+ "	ON d.uid=u.uid"
+				+ "	WHERE d.isDeleted=0 AND ${field} LIKE #{query}")
+		public int getDiaryBoardCount(String field, String query);
 	 
 	 @Select("select * from diaryboard where did=#{did}")
 	 DiaryBoard getDiaryBoard(int did);
@@ -32,14 +39,9 @@ public interface DiaryBoardDao {
 
 	 @Update("UPDATE diaryboard SET title=#{title}, content=#{content}, "
 			+ " modTime=NOW(), files=#{files} WHERE did=#{did}")
-	 void updateDiaryBoard(DiaryBoard diaBoard);
+	 void updateDiaryBoard(DiaryBoard diaryBoard);
 
 	 @Update("UPDATE diaryboard SET isDeleted=1 WHERE did=#{did}")
-	 void deleteDiaryBoard(int did);	 
+	 void deleteDiaryBoard(int did);
 	 
-	 @Select("SELECT COUNT(did) FROM diaryboard AS d "  //확인필요 
-				+ "	JOIN users AS u"
-				+ "	ON d.uid=u.uid"
-				+ "	WHERE d.isDeleted=0 AND ${field} LIKE #{query}")
-	 public int getDiaryBoardCount(String field, String query);
 }
