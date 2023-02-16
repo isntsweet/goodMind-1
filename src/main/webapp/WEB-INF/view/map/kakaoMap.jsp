@@ -61,7 +61,7 @@
         <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
-                    <form action="/map/kakaoMap" method="post">
+                    <form action="/goodM/map/kakaoMap" method="post">
                         주소 : <input type="text" value="" name="searchWord" size="15"> 
                         <button type="submit">검색하기</button> 
                     </form>
