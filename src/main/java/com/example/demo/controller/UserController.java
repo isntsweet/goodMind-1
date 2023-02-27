@@ -53,6 +53,9 @@ public class UserController {
 		case UserService.UID_NOT_EXIST:
 			model.addAttribute("msg", "회원 가입 페이지로 이동합니다.");
 			model.addAttribute("url", "/goodM/user/register");
+		case UserService.IS_DELETED_1:
+			model.addAttribute("msg", "탈퇴한 회원입니다.");
+			model.addAttribute("url", "/goodM/user/login");
 		}
 		return "user/alertMsg";
 	}
