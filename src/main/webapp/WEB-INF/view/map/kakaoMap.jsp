@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
       <style>
 		.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -50,13 +50,14 @@
 	</style>
     <%@ include file="../common/heading.jsp" %>
 </head>
+
 <body style="margin:40px;">
     <%@ include file="../common/top.jsp" %>
     <div class="container" style="margin-top: 80px;">
         <div class="row">
             <%@ include file="../common/aside.jsp" %>       
             
-            <!-- =================== main =================== -->
+       <!-- =================== main =================== -->
             
 			<h3 style="margin-top:80px;">주변 병원/기관 찾기</h3>
 		    <div class="map_wrap col-sm-9">
@@ -449,6 +450,7 @@ function makeCircle(lat, lon) {
 }
 
 </script>
+</div>
 <%@ include file="../common/bottom.jsp" %>
 </body>
 </html>

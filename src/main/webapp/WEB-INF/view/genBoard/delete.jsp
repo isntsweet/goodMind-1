@@ -4,44 +4,28 @@
 <html lang="ko">
 <head>
     <%@ include file="../common/heading.jsp" %>
-    <style>
-        th, td { text-align: center; }
-    </style>
 </head>
 
-<body>
-    <%@ include file="../common/top.jsp" %>
-
-    <div class="container" style="margin-top: 80px;">
-        <div class="row">
-            <%@ include file="../common/aside.jsp" %>
-            
-            <!-- =================== main =================== -->
-            <div class="col-sm-9">
-            	<h3>게시글 삭제</h3>
-            	<hr>
-                <div class="row">
-			        <div class="col-3"></div>
-			        <div class="col-6">
-						<div class="card border-warning mt-3">
-			                <div class="card-body">
-			                    <strong class="card-title">정말로 삭제하시겠습니까?</strong>
-			                    <p class="card-text text-center">
-			                        <br>
-			                        <button class="btn btn-primary" onclick="location.href='/goodM/genBoard/deleteConfirm?genBid=${genBid}'">삭제</button>
-			                        <button class="btn btn-secondary" onclick="location.href='/goodM/genBoard/list?p=${currentGenBoardPage}&f=&q='">취소</button>
-			                    </p>
-			                </div>
-			            </div>			            
-			        </div>
-			        <div class="col-3"></div>
-			    </div>
-            </div>
-            <!-- =================== main =================== -->
-            
-        </div>
-    </div>
-
-    <%@ include file="../common/bottom.jsp" %>
+<body style="margin-bottom:100px">
+	<%@ include file="../common/aside.jsp" %>
+	<div class="container-fluid">
+		<header id="header">
+			<a href="/goodM/user/main" class="logo"><strong><img src="/img/logo.png" alt="" width="30px" height="30px"></strong> by 멀캠가네 둘째 조</a>
+		</header>
+		<!-- Content -->
+		<!-- 제목 -->
+		<h2>게시글 삭제</h2>
+		<div class="card border-warning mt-3">
+			<div class="card-body">
+			    <strong class="card-title">정말로 삭제하시겠습니까?</strong>
+			    <p class="card-text text-center">
+			        <br>
+			        <button class="btn btn-primary" onclick="location.href='/goodM/genBoard/deleteConfirm?genBid=${genBid}'">삭제</button>
+					<button class="btn btn-secondary" onclick="location.href='/goodM/genBoard/list?p=${currentGenBoardPage}&f=&q='">취소</button>
+		        </p>
+		    </div>
+		</div>
+	</div>
+<%@ include file="../common/bottom.jsp" %>
 </body>
 </html>
