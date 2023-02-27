@@ -88,10 +88,14 @@ public class UserController {
 		String email = req.getParameter("email").strip();
 		MultipartFile profile = req.getFile("filename");
 		String filename = profile.getOriginalFilename();
-		String imageFile_ = uploadDir + "/" + filename;
-		File uploadFile = new File(imageFile_);
-		profile.transferTo(uploadFile);
-
+		System.out.println(profile + "===" + filename);
+		if (filename != null && !filename.equals("")) {
+		    String imageFile_ = uploadDir + "/" + filename;
+		    File uploadFile = new File(imageFile_);
+		    profile.transferTo(uploadFile);
+		} else
+			filename = null;
+		
 		User user = userService.getUser(uid);
 		if (user != null) {
 			model.addAttribute("msg", "중복 아이디입니다.");
@@ -110,9 +114,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/myPage")
-	public String myPage(HttpServletRequest req, Model model) {
-		List<User> userPage = userService.getUserInfo();		
-		model.addAttribute("userPage", userPage);
+	public String myPage(HttpSession session, Model model) {
+		String uid = (String) session.getAttribute("uid");
+		User user = userService.getUser(uid);
+		model.addAttribute("user", user);
 		return "user/myPage";
 	}
 
