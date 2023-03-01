@@ -48,7 +48,7 @@
 				<a href="/goodM/calendar/calendar/right"><i class="fa-solid fa-angle-right me-2"></i></a>
 				<a href="/goodM/calendar/calendar/right2"><i class="fa-solid fa-angles-right"></i></a>
 			</div>
-			<div>
+			<div id="diary-icon">
 				<a href="/goodM/diaryBoard/write"><i class="fa-solid fa-pen me-3"></i></a>
 				<a href="/goodM/diaryBoard/list/"><i class="fa-solid fa-table-list"></i></a>
 			</div>
