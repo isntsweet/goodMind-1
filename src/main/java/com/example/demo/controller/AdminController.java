@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.User;
@@ -44,5 +45,12 @@ public class AdminController {
 	public String restore(@PathVariable String uid) {
 		adminService.restoreUser(uid);
 		return "redirect:/goodM/admin/deletedUserList/1";
+	}
+	
+	@PostMapping("/request")
+	public String request(HttpServletRequest request) {
+	    String userId = request.getParameter("userId");
+	    String password = request.getParameter("password");
+	    return "user/login";
 	}
 }

@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9829722c486e4c2d4f6d8477a49a1129&libraries=services,clusterer,drawing"></script>
     <link rel="stylesheet" href="/css/map.css">
 	<%@ include file="../common/top.jsp" %>
     <%@ include file="../common/heading.jsp" %>
    	<%@ include file="../chat/gibuni.jsp" %>
 </head>
 
-<body style="margin-bottom:100px">
+<body>
 	<div class="container-fluid" id="inFrame">
     <%@ include file="../common/aside.jsp" %>
 			<header id="header">
@@ -47,6 +48,7 @@
 		        </div>
 		<!-- =================== main =================== -->
 	</div>
+	
 <script>
 // 목록 숨기기 토글
 $(document).ready(function() {
@@ -63,9 +65,8 @@ $(document).ready(function() {
 document.getElementById('myLocation').addEventListener('click', function() {
    myLocation();
 });
-
 </script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9829722c486e4c2d4f6d8477a49a1129&libraries=services,clusterer,drawing"></script>
+
 <script src="/js/map.js"></script>
 </div>
 <%@ include file="../common/bottom.jsp" %>
