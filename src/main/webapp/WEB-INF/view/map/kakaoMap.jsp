@@ -5,6 +5,7 @@
 <html lang="ko">
 <head>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9829722c486e4c2d4f6d8477a49a1129&libraries=services,clusterer,drawing"></script>
+	<script src="/js/map.js"></script>
     <link rel="stylesheet" href="/css/map.css">
 	<%@ include file="../common/top.jsp" %>
     <%@ include file="../common/heading.jsp" %>
@@ -91,7 +92,7 @@ searchPlaces();
 
 </script>
 
-<script src="/js/map.js"></script>
+
 </div>
 <%@ include file="../common/bottom.jsp" %>
 </body>
