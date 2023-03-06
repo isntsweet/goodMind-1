@@ -77,10 +77,10 @@
 			</div>
 		<!--페이지네이션-->
 		<ul class="pagination justify-content-center mt-4">
-			<c:if test="${currentInfoBoardPage gt 10}">
+			<c:if test="${currentInfoBoardPage gt 12}">
 				<li class="page-item"><a class="page-link" href="/goodM/infoBoard/list?p=${startPage - 1}&f=${field}&q=${query}">&laquo;</a></li>
 			</c:if>
-			<c:if test="${currentInfoBoardPage le 10}">
+			<c:if test="${currentInfoBoardPage le 12}">
 				<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
 			</c:if>
 			<c:forEach var="page" items="${pageList}" varStatus="loop">    
