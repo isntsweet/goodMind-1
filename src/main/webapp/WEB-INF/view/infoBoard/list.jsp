@@ -28,7 +28,9 @@
 		<!-- 제목 -->
 		<h2>심리건강정보</h2>
 			<span style="font-size: 0.6em;">
-				<a href="/goodM/infoBoard/write" class="ms-5"><i class="far fa-file-alt"></i> 글쓰기</a>
+				<c:if test="${uid eq 'admin'}">
+					<a href="/goodM/infoBoard/write" class="ms-5"><i class="far fa-file-alt"></i> 글쓰기</a>
+				</c:if>
 			</span>
 			<table class="table table-sm table-borderless">
 				<tr class="d-flex">
@@ -46,7 +48,7 @@
 						<input class="form-control me-2" type="search" placeholder="검색 내용" name="q" id="search-b">
 					</td>
 					<td class="col-1">
-						<button class="btn btn-outline-primary" onclick="search()">검색</button>
+						<button class="btn btn-lavender" onclick="search()">검색</button>
 					</td>
 				</tr>
 			</table>
