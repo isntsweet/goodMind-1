@@ -29,6 +29,7 @@
 		        <button id="menuToggle">목록 숨기기</button>
 		        <button id="myLocation">내 위치</button>
 		        <select id="radiusSelect">
+		        	<option value="0">반경삭제</option>
 		        	<option value="1">1km</option>
 		        	<option value="3">3km</option>
 		        	<option value="5">5km</option>
