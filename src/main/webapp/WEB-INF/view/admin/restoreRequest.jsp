@@ -17,18 +17,23 @@
 		<!-- 제목 -->
 		<h2>탈퇴회원 복원 신청</h2><!-- 제목 -->
 			<form id="requestForm" action="/goodM/admin/request" method="POST">
-			  <div>
-			    <label for="uid">아이디</label>
-			    <input type="text" id="uid" name="uid" required>
-			  </div>
-			  <div>
-			    <label for="pwd">비밀번호</label>
-			    <input type="password" id="pwd" name="pwd" required>
-			  </div>
-			  <div>
-			    <button type="submit">확인</button>
-			  </div>
-			</form>
+				<table class="table table-borderless" id="comeIn">
+					<tr>
+					    <td><label for="uid">아이디</label></td>
+					    <td><input type="text" id="uid" name="uid" required></td>
+					</tr>
+				<tr>
+					<td><label for="pwd">비밀번호</label></td>
+					<td><input type="password" id="pwd" name="pwd" required></td>
+				</tr>
+			    <tr>
+					<td colspan="2" style="text-align: center;">
+						<input class="btn btn-lavender" type="submit" value="제출">
+						<input class="btn btn-secondary" type="reset" value="취소">
+					</td>
+			    </tr>
+			</table>
+		</form>
 	</div>
 <%@ include file="../common/bottom.jsp" %>
 </body>

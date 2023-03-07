@@ -15,7 +15,12 @@
 		    <div class="modal-content">
 		      	<!-- Modal Header -->
 				<div class="modal-header">
-		        	<h3 class="modal-title">기부니 챗봇</h3>
+		        	<h3 class="modal-title">
+		        	기부니 챗봇
+		        	<button type="button" class="btn btn-lavender" data-bs-toggle="popover" title="챗봇 사용 안내" 
+		        	data-bs-content="서비스 안내 라고 말씀하시면 서비스 명칭을 보여주며, 그 중 궁금한 서비스 이름을 입력하시면 기부니가 설명해줍니다. 아니면 기부니와 대화를 즐기실 수 있습니다.">
+						처음이신가요?
+					</button></h3>
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 		      	</div>
 		
@@ -38,6 +43,12 @@
 		    </div>
 		  	</div>
 		</div>
+	<script>
+	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+	  return new bootstrap.Popover(popoverTriggerEl)
+	})
+	</script>
 	</div>
 </body>
 </html>

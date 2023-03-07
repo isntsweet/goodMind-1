@@ -2,7 +2,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
-DROP TABLE IF EXISTS diary;
+DROP TABLE IF EXISTS anniversary;
 DROP TABLE IF EXISTS diaryBoard;
 DROP TABLE IF EXISTS genLikeTable;
 DROP TABLE IF EXISTS reply;
@@ -10,7 +10,6 @@ DROP TABLE IF EXISTS genBoard;
 DROP TABLE IF EXISTS infoLikeTable;
 DROP TABLE IF EXISTS infoBoard;
 DROP TABLE IF EXISTS map;
-DROP TABLE IF EXISTS testResult;
 DROP TABLE IF EXISTS users;
 
 
@@ -18,16 +17,13 @@ DROP TABLE IF EXISTS users;
 
 /* Create Tables */
 
-CREATE TABLE diary
+CREATE TABLE anniversary
 (
-	uid varchar(20) NOT NULL,
-	dayStr char(8) NOT NULL,
-	anniversary varchar(20),
-	title varchar(80),
-	content varchar(800),
-	sentiment varchar(20),
-	isHoliday int DEFAULT 0,
-	score int
+	aid int(10) NOT NULL,
+	aname varchar(80),
+	adate varchar(80),
+	isHoliday int(10) DEFAULT 0,
+	PRIMARY KEY (aid)
 );
 
 
@@ -51,7 +47,7 @@ CREATE TABLE genBoard
 	genBid int NOT NULL AUTO_INCREMENT,
 	uid varchar(20) NOT NULL,
 	title varchar(80) NOT NULL,
-	content varchar(2000),
+	content varchar(5000),
 	modTime datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	viewCount int DEFAULT 0 NOT NULL,
 	replyCount int DEFAULT 0 NOT NULL,
@@ -77,6 +73,7 @@ CREATE TABLE infoBoard
 	infoBid int NOT NULL AUTO_INCREMENT,
 	uid varchar(20) NOT NULL,
 	title varchar(80) NOT NULL,
+	filename varchar(50),
 	content varchar(5000),
 	modTime datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	viewCount int DEFAULT 0 NOT NULL,
@@ -118,13 +115,6 @@ CREATE TABLE reply
 );
 
 
-CREATE TABLE testResult
-(
-	uid varchar(20) NOT NULL,
-	result varchar(200) NOT NULL
-);
-
-
 CREATE TABLE users
 (
 	uid varchar(20) NOT NULL,
@@ -162,14 +152,6 @@ ALTER TABLE reply
 ALTER TABLE infoLikeTable
 	ADD FOREIGN KEY (infoBid)
 	REFERENCES infoBoard (infoBid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE diary
-	ADD FOREIGN KEY (uid)
-	REFERENCES users (uid)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
@@ -216,14 +198,6 @@ ALTER TABLE infoLikeTable
 
 
 ALTER TABLE reply
-	ADD FOREIGN KEY (uid)
-	REFERENCES users (uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE testResult
 	ADD FOREIGN KEY (uid)
 	REFERENCES users (uid)
 	ON UPDATE RESTRICT
