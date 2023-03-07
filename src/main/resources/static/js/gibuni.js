@@ -1,17 +1,10 @@
 $(function(){
-    // check if welcome message has been received before
-    if (getCookie("welcome_message_received")) {
-       
-        $("#chatBox").show();
-    } else {
-        // 웰컴메시지를 받기 위해 message 입력 받기 전 빈 값으로 서버에 전송해서 웰컴메세지 받음
-        callAjax();
-    }
-
+    // 웰컴메시지를 받기 위해 message 입력 받기 전 빈 값으로 서버에 전송해서 웰컴메세지 받음
+    callAjax();
     // 질문하고 응답 받기(텍스트)
     $('#chatForm').on('submit', function(event){
         event.preventDefault();
-        if($('#message').val() == "") {
+        if($('#message').val() == "") { // 질문을 입력하지 않고 전송 버튼 누를 때 웰컴 메세지 뜨지 않게
             alert("질문을 입력하세요");
             return false;
         }
@@ -19,19 +12,18 @@ $(function(){
             $('#chatBox').append("<div class='msgBox send'><span id='in'><span>" +
                 $('#message').val() + "</span></span></div><br>");
         }
-        callAjax();
+    callAjax();
+        /* 입력란 비우기*/
         $('#message').val('');
-    });
-     // ajax function
+    }); // submit 끝
+     // 별도의 ajax 생성
     function callAjax() {
         $.ajax({
             url:"/goodM/chat/gibuni",
             type:"post",
             dataType :'json',
             data:{message: $('#message').val()},
-            success:function (result){
-                // set cookie to indicate that welcome message has been received
-                setCookie("welcome_message_received", "true", 1);
+			success:function (result){
                 //JSON 형식 그대로 반환 받음
                 var bubbles = result.bubbles;
                 for(var b in bubbles){
@@ -74,41 +66,17 @@ $(function(){
                                         }
                                     }
                                 } else {
-                                    $("#chatBox").append("<div class='msgBox receive'><span id='in'><span>챗봇2, 이미지</span><br><span>" + bubbles[b].data.cover.data.description+ "</p>");
+                                    $("#chatBox").append("<div class='msgBox receive'><span id='in'><img src='/img/gibuni.png' alt='기부니 아이콘' id='gibuni'><br><span>" + bubbles[b].data.cover.data.description+ "</p>");
                                 }
                             }
                         }
-                    }
-                // 스크롤해서 올리기
-                $("#chatBox").scrollTop($("#chatBox").prop("scrollHeight"));
-                // show chat box after receiving welcome message
-                $("#chatBox").show();
-            },
-            error:function(){
+                                       }//bubbles for문 종료
+                    // 스크롤해서 올리기
+                    $("#chatBox").scrollTop($("#chatBox").prop("scrollHeight"));
+                }//function문 종료
+            , error:function(){
                 alert("오류가 발생했습니다.");
             }
-        });
-    }
-
-    // helper functions to set and get cookies
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
+        })
     }
 });
